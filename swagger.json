@@ -1,0 +1,118 @@
+{
+    "swagger": "2.0",
+    "x-stoplight": {
+        "id": "806sij2w0brax"
+    },
+    "info": {
+        "title": "custom",
+        "version": "1.0",
+        "contact": {
+            "name": "Rohit Pant",
+            "email": "rpant@avidxchange.com"
+        },
+        "description": "this custom api allows the update of ceratin fields for payments"
+    },
+    "host": "avidxchange-org2--org2ut.sandbox.my.salesforce.com",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/NintexSFPayment": {
+            "post": {
+                "summary": "",
+                "operationId": "post-NintexSFPayment",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "x-examples": {
+                                "example-1": [
+                                    {
+                                        "status": "success"
+                                    }
+                                ]
+                            },
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    },
+                                    "errorMessages": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "POST to NintextSFPayment",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    },
+                                    "Payment_Status__c": {
+                                        "type": "string"
+                                    },
+                                    "Payment_ONST_Check__c": {
+                                        "type": "string"
+                                    },
+                                    "Payment_ONST_Approved_Date__c": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "Nintex"
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "NintextOauth2": {
+            "type": "oauth2",
+            "flow": "application",
+            "scopes": {
+                "user": "user allowed to update setting"
+            },
+            "tokenUrl": "https://avidxchange-org2--org2ut.sandbox.my.salesforce.com/services/oauth2/token"
+        }
+    },
+    "security": [
+        {
+            "NintextOauth2": []
+        }
+    ],
+    "basePath": "/services/apexrest",
+    "tags": [
+        {
+            "name": "Nintex"
+        }
+    ]
+}
